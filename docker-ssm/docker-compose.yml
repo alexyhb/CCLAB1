@@ -1,0 +1,26 @@
+version: "2"
+
+services: #控制image的运行方式
+  tomcat: #编排文件中容器的别名
+    build: ./tomcat #从当前文件目录下的tomcat文件夹下寻找Dockerfile文件开始构建tomcat镜像
+    image: tomcat-ssm            #构建之后镜像的名字
+    container_name: tomcat-ssm   #容器的名字
+    restart: always              #容器重启之后总是会重新构建本镜像
+    depends_on:                  #依赖于mysql和redis，目的是为了在mysql和redis启动之后再启动本容器
+      - mysql
+    ports:
+       - "8888:8080"              #冒号左边的8888代表宿主机中的端口，右边的8080代表容器中的端口
+  mysql:
+      build: ./mysql
+      image: mysql-ssm:mysql
+      container_name: mysql-ssm
+      restart: always
+      ports:
+        - "3301:3306"
+      volumes:
+        - /backups/mysql:/var/lib/mysql
+      environment:                #在mysql初始化的时候设置登陆密码
+            MYSQL_ROOT_PASSWORD: 123456
+            MYSQL_DATABASE: mydata
+            MYSQL_USER: xkw
+            MYSQL_PASSWORD: 123456
