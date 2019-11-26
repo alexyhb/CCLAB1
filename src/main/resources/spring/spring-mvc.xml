@@ -30,7 +30,7 @@
         (2)允许使用"/"做整体映射
      -->
     <mvc:default-servlet-handler/>
-    <mvc:resources mapping="/static/**" location="/statics/"/>
+    <mvc:resources mapping="/static/**" location="/html/"/>
 
 
     <!-- 3.配置jsp 显示ViewResolver -->
@@ -62,9 +62,9 @@
         <!--&lt;!&ndash; 内存中的最大值 &ndash;&gt;-->
         <!--<property name="maxInMemorySize" value="40960"/>-->
     <!--</bean>-->
-    <import resource="shiro-context.xml"/>
+
     <context:component-scan base-package="com.controller"/>
     <context:component-scan base-package="com.dao"/>
-    <context:component-scan base-package="com.service.impl"/>
+    <context:component-scan base-package="com.service.serviceImpl"/>
 
 </beans>

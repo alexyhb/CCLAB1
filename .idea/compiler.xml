@@ -9,5 +9,8 @@
         <module name="CCLAB1" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="CCLAB1" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
