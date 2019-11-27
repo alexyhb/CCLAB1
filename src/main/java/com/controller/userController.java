@@ -57,8 +57,8 @@ public class userController {
     }
     @ResponseBody
     @RequestMapping(value = "/addUser" ,method = RequestMethod.POST)
-    public String addUser(@RequestParam("name") String name ,@RequestParam("phone") int phone,@RequestParam("email") String email  ) {
-        boolean nr= userServiceImpl.addUser(name, phone, email);
+    public String addUser(@RequestParam("name") String name ,@RequestParam("phone") String phone,@RequestParam("email") String email  ,@RequestParam("role") String role) {
+        boolean nr= userServiceImpl.addUser(name, phone, email,role);
         JSONObject json= new JSONObject();
         json.put("res", JSONObject.toJSON(nr));
         return json.toJSONString();

@@ -2,7 +2,7 @@ package com.pojo;
 
 public class user {
     private String name;
-    private int phone;
+    private String phone;
     private String email;
     private String role;
 
@@ -14,11 +14,11 @@ public class user {
         this.name = name;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

@@ -28,8 +28,8 @@ public class userServiceImpl implements userService {
     }
 
     @Override
-    public boolean addUser(String name,int phone,String email) {
-         boolean flag=userDao.addUser( name, phone, email);
+    public boolean addUser(String name,String phone,String email,String role) {
+         boolean flag=userDao.addUser( name, phone, email,role);
          return flag;
     }
 

@@ -8,7 +8,7 @@ import java.util.List;
 public interface userService {
     user getUser(int id);
     int getUserNr();
-    boolean addUser(String name,int phone,String email);
+    boolean addUser(String name,String phone,String email,String role);
 
     List<user> getUserList();
 }
