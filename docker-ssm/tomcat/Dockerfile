@@ -1,2 +1,2 @@
 FROM tomcat
-COPY ./CCLAB1-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/
+COPY ./CCLAB1.war /usr/local/tomcat/webapps/
