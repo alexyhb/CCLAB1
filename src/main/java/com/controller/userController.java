@@ -25,7 +25,7 @@ public class userController {
     public String getUserList() {
         List<user> list= userServiceImpl.getUserList();
         JSONObject json= new JSONObject();
-        json.put("user", JSONObject.toJSON(list));
+        json.put("data",JSONObject.toJSON(list));
         return json.toJSONString();
     }
     /**

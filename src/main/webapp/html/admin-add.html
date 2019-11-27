@@ -45,17 +45,17 @@
 	<div class="row cl">
 		<label class="form-label col-xs-4 col-sm-3">ROLE：</label>
 		<div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:200px;">
-			<select class="select" name="adminRole" size="1">
-				<option value="0">Super administrator</option>
-				<option value="1">Chief editor</option>
-				<option value="2">Column main series</option>
-				<option value="3">Column editing</option>
+			<select class="select" name="adminRole" id="adminRole" size="1">
+				<option value="Super administrator">Super administrator</option>
+				<option value="Chief editor">Chief editor</option>
+				<option value="Column main series">Column main series</option>
+				<option value="Column editing">Column editing</option>
 			</select>
 			</span> </div>
 	</div>
 	<div class="row cl">
 		<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-			<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;SUMBIT&nbsp;&nbsp;">
+			<input class="btn btn-primary radius" id="submit" value="&nbsp;&nbsp;SUMBIT&nbsp;&nbsp;">
 		</div>
 	</div>
 	</form>
@@ -73,6 +73,8 @@
 <script type="text/javascript" src="lib/jquery.validation/1.14.0/messages_zh.js"></script> 
 <script type="text/javascript">
 $(function(){
+
+    var base_url="http://localhost:8080/cc/user/";
 	$('.skin-minimal input').iCheck({
 		checkboxClass: 'icheckbox-blue',
 		radioClass: 'iradio-blue',
@@ -128,10 +130,38 @@ $(function(){
 		}
 	});
 });
+
+
+function addUser(){
+    var name=$("#adminName").val();
+    var phone=$("#phone").val();
+    var email=$("#email").val();
+    var role=$("#adminRole").val();
+    var arr={
+        "name":name,
+		"phone":phone,
+		"email":email,
+		"role":role,
+
+    }
+    $.ajax({
+        type:'POST',
+        url:base_url+"/addUser",
+        data:arr,
+        success:function(res){
+            $("#admin_nr").html(res.data);
+        },
+        error:function(res){
+            console.log(res)
+        }
+    })
+}
 </script> 
 <script>
 	$(function () {
-		
+		$("#submit").click(function () {
+			addUser();
+        })
     })
 </script>
 <!--/请在上方写此页面业务相关的脚本-->
