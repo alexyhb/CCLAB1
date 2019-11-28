@@ -1,11 +1,30 @@
 package com.pojo;
 
+import java.sql.Timestamp;
+
 public class user {
     private int id;
     private String name;
     private String phone;
     private String email;
     private String role;
+    private Timestamp creatTime;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Timestamp getCreatTime() {
+        return creatTime;
+    }
+
+    public void setCreatTime(Timestamp creatTime) {
+        this.creatTime = creatTime;
+    }
 
     public String getName() {
         return name;

@@ -9,6 +9,6 @@ public interface userService {
     user getUser(int id);
     int getUserNr();
     boolean addUser(String name,String phone,String email,String role);
-
+    boolean deleteUser(int id);
     List<user> getUserList();
 }

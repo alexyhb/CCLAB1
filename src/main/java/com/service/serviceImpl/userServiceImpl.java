@@ -7,6 +7,8 @@ import com.service.userService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,8 +31,17 @@ public class userServiceImpl implements userService {
 
     @Override
     public boolean addUser(String name,String phone,String email,String role) {
-         boolean flag=userDao.addUser( name, phone, email,role);
+        Date date = new Date();
+
+        Timestamp timestamp = new Timestamp(date.getTime());
+        boolean flag=userDao.addUser( name, phone, email,role,timestamp);
          return flag;
+    }
+
+    @Override
+    public boolean deleteUser(int id) {
+        boolean flag=userDao.deleteUser(id);
+        return flag;
     }
 
     @Override
