@@ -17,7 +17,7 @@
 
     <insert id="addUser">
         insert into user
-        (name, phone, email,role,creat_time)
+        (name, phone, email,role,create_time)
         VALUES (#{name},#{phone},#{email},#{role},#{creat_time})
     </insert>
     <delete id="deleteUser">

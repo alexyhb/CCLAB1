@@ -137,7 +137,8 @@
                     html += "<td>"+arr[i].email+"</td>"
                     html += "<td>"+arr[i].role+"</td>"
                     html += "<td>"+timeParse(arr[i].creatTime)+"</td>"
-                    html += "<td class='td - manage'></a> <a title='编辑' href='javascript: ; ' onclick='admin_edit('管理员编辑', 'admin-add.html', '1', '800', '500')' class='ml - 5' style='text - decoration: none'><i class='Hui - iconfont'>&#xe6df;</i></a> <a title='删除' href='javascript: ; ' onclick='admin_del(this, '1')' class='ml - 5' style='text - decoration: none'><i class='Hui - iconfont'>&#xe6e2;</i></a></td>"
+                    html += "<td class='td - manage'><a name="+ arr[i].id+" title='删除' href='javascript: ; ' onclick='deleteUser(this)'" +
+                        " class='ml - 5' style='text - decoration: none'>delete</a></td>"
                     html += "</tr>"
                     $("#item_tbody").append(html);
                 }
@@ -163,7 +164,28 @@
             }
         })
     }
+    function deleteUser(e){
 
+        var id =$(e).attr("name")
+        var arr={
+            "id":id
+        }
+        $.ajax({
+            type:'POST',
+            url:base_url+"/deleteUser",
+            data:arr,
+            success:function(res){
+                var data=JSON.parse(res);
+                var nr=data.res;
+               if(nr==true){
+                   location.reload(true);
+               }
+            },
+            error:function(res){
+                console.log(res)
+            }
+        })
+    }
     $(function(){
         data_render();
         getNr();
