@@ -42,6 +42,14 @@ public class userController {
         return json.toJSONString();
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/deleteUser" ,method = RequestMethod.POST)
+    public String deleteUser(@RequestParam("id") int id ) {
+        boolean u= userServiceImpl.deleteUser(id);
+        JSONObject json= new JSONObject();
+        json.put("res", JSONObject.toJSON(u));
+        return json.toJSONString();
+    }
     /**
      *
      *
